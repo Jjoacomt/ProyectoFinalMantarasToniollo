@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
+    font-family:cursive;
+}
+
+#clock {
+    font-size: 24px;
+    text-align: end;
+    border: 5px solid rgb(251, 255, 0);
+    border-radius: 10%;
+    padding: 10px;
+    display: inline-block;
+    color: white;
+}
+
+body{
+    background-color: rgb(29, 27, 27);
+}
+
+input{
+    background-color: rgb(251, 255, 0);
+    border-radius: 10%;
+}
+button{
+    background-color:rgb(251, 255, 0);
+    border-radius: 10%;
+}
