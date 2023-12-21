@@ -1,10 +1,53 @@
 document.getElementById('spinner').style.display = 'block';
 
+    let button = document.getElementById("button")
+    let enter = document.getElementById("SearchWorker")
+    let resultContainer = document.getElementById("result")
+
 setTimeout(function() {
     document.getElementById('spinner').style.display = 'none';
+
     //APIS
     let url = "https://randomuser.me/api/"
 
+    
+
+
+        button.addEventListener("click", function () {
+        let sex = ["male", "female"]
+
+        let gender = enter.value.toLowerCase()
+
+        let apiUrl
+
+        if (sex.includes(gender)) {
+            apiUrl = `https://randomuser.me/api/?gender=${gender}`
+
+            fetch(apiUrl)
+            
+            .then(response => response.json())
+            .then(data => {
+                resultContainer.innerHTML =
+                `
+                <img src="${data.results[0].picture.medium}" alt="Usuario">
+                <p>Nombre: ${data.results[0].name.first}</p>
+                <p>Apellido: ${data.results[0].name.last}</p>
+                `
+            })
+            .catch(error => console.log(error));
+        }
+        
+        else {
+            Swal.fire ({
+            icon: "error",
+            title: "Wow...",
+            text: "Something went wrong! please try whit male or female",
+            footer: '<a href="#">Why do I have this issue?</a>',
+            });
+            return;
+        }
+    })
+        
 
     //RELOJ
     function updateClock() {
@@ -33,33 +76,10 @@ setTimeout(function() {
 
 
 
-
-    let button = document.getElementById("button")
-    let enter = document.getElementById("SearchWorker")
-
     
-    const array1 =[]
-    const array2 =[]
-
     
-    button.addEventListener("click", function () {
-        let gender = enter.value; 
-
-        if (gender === "male" || gender === "masculino") {
-            // proceso mediante el cual la api busca persona del sexo masculino
-            console.log("male")
-        } else if (gender === "female" || gender === "femenino") {
-            // proceso mediante el cual se busca persona femenina en la api
-            console.log("female")
-        } else {
-            Swal.fire ({
-            icon: "error",
-            title: "Wow...",
-            text: "Something went wrong!",
-            footer: '<a href="#">Why do I have this issue?</a>',
-            });
-        }
-    })
+    
+    
     //FUNCTIONS
 
 
